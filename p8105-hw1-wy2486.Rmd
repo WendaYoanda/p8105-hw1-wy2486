@@ -57,7 +57,6 @@ p2flippercat_df = tibble(
 
 p2flippercat_df
 ```
-
 **Pulling Mean of Each Variable in The Dataframe:**
 
 * The mean of random_sample is `r round(mean(pull(p2flippercat_df, random_sample)), 2)`  
@@ -69,21 +68,7 @@ p2flippercat_df
 
 As shown above, calculating the mean of the character vector and factor vector produces *NA* (does not work), while it works for the random sample and logical vector. The random sample is numeric, so its mean can be calculated directly. For the logical vector, R treats *TRUE as 1* and *FALSE as 0*, so the mean can also be calculated. The character and factor vectors are not numeric, so their means cannot be calculated directly.
 
-**Converting Variables From One Type To Another:**
 
-```{r results="hide", warning=FALSE}
-as.numeric(pull(p2flippercat_df, logical_vector))
 
-as.numeric(pull(p2flippercat_df, character_vector))
 
-as.numeric(pull(p2flippercat_df, factor_vector))
-```
-
-When I ran the code chunk above, I found that:
-
-* For logical_vector, R converts *TRUE* to 1 and *FALSE* to 0. 
-* For character_vector, R cannot convert values like *"Penguin_A", "Penguin_B", "Penguin_C", etc* into numbers, so the results are NA. 
-* For factor_vector, R converts the categories into numbers, where *"long"* = 1, *"medium"* = 2, and *"short"* = 3. However, these numbers are just codes for the different categories and do not have actual numerical meaning.
-
-This helps explain the results when calculating the mean. The mean works for the logical vector because R can treat *TRUE* and *FALSE* as 1 and 0. However, a mean does not make sense for the character or factor vectors because they do not contain actual numerical measurements.
 
